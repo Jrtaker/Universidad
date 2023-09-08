@@ -31,7 +31,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu6"/>
+            <Property name="text" type="java.lang.String" value="Hola"/>
           </Properties>
         </Menu>
       </SubComponents>

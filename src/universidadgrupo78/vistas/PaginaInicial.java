@@ -52,7 +52,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         jMenu5.setText("jMenu5");
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("jMenu6");
+        jMenu6.setText("Hola");
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
