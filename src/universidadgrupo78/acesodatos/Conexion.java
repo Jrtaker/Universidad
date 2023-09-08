@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package universidad;
+package universidadgrupo78.acesodatos;
 
 /**
  *
  * @author Joni
  */
-public class Universidad {
+public class Conexion {
+    private static final String URL="jdbc:mariadb://localhost/";
+    private static final String DB="universidad";
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }
