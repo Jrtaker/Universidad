@@ -8,8 +8,6 @@ package universidadgrupo78.acesodatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,12 +27,13 @@ public class Conexion {
         
         if(connection ==null){
             try {
-                Class.forName("org.mariadb.jdbc.Driver Java");
+                Class.forName("org.mariadb.jdbc.Driver");
                 connection = DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);                
+                JOptionPane.showMessageDialog(null, "Conectado"); 
             } catch (ClassNotFoundException ex){ 
                 JOptionPane.showMessageDialog(null, "Error al cargar los driver."); 
             }catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Abrir XAMPP o algo esta mal escrito.");
+                JOptionPane.showMessageDialog(null, "Abrir XAMPP o algo esta mal escrito.");
             }
         }
         return connection;
