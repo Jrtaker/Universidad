@@ -22,7 +22,7 @@ public class UniversidadGrupo78 {
             new PaginaInicial().setVisible(true);
           }
        });
-        
+       
     }
     
 }
