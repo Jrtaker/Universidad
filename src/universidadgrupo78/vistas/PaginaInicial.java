@@ -14,12 +14,12 @@ import javax.swing.ImageIcon;
  * @author Joni
  */
 public class PaginaInicial extends javax.swing.JFrame {
-
     /**
      * Creates new form PaginaInicial
      */
     public PaginaInicial() {
         initComponents();
+       
     }
 
     /**
@@ -123,11 +123,6 @@ public class PaginaInicial extends javax.swing.JFrame {
         jMenuBar1.add(jMConsultas);
 
         jMSalir.setText("Salir");
-        jMSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMSalirActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(jMSalir);
 
         setJMenuBar(jMenuBar1);
@@ -145,11 +140,10 @@ public class PaginaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
-        this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jMSalirActionPerformed
-
+    public void jMSalirActionPerformed(java.awt.event.ActionEvent evt){
+        this.dispose();
+        System.exit(0);
+    }
     private void jMIFormularioDeAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioDeAlumnoActionPerformed
         escritorio.repaint();
         FormularioDeAlumno temp = new FormularioDeAlumno();
