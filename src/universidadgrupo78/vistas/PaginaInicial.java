@@ -14,11 +14,13 @@ import javax.swing.ImageIcon;
  * @author Joni
  */
 public class PaginaInicial extends javax.swing.JFrame {
+    
     /**
      * Creates new form PaginaInicial
      */
     public PaginaInicial() {
         initComponents();
+        
        
     }
 
@@ -31,6 +33,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         ImageIcon icon = new ImageIcon(getClass().getResource("UniversidadGrupo78.jpg"));
         Image img=icon.getImage();
         escritorio = new javax.swing.JDesktopPane(){
@@ -52,6 +55,8 @@ public class PaginaInicial extends javax.swing.JFrame {
         jMConsultas = new javax.swing.JMenu();
         jMIAlumnosPorMateria = new javax.swing.JMenuItem();
         jMSalir = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +128,11 @@ public class PaginaInicial extends javax.swing.JFrame {
         jMenuBar1.add(jMConsultas);
 
         jMSalir.setText("Salir");
+        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMSalir);
 
         setJMenuBar(jMenuBar1);
@@ -140,10 +150,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void jMSalirActionPerformed(java.awt.event.ActionEvent evt){
-        this.dispose();
-        System.exit(0);
-    }
+    
     private void jMIFormularioDeAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioDeAlumnoActionPerformed
         escritorio.repaint();
         FormularioDeAlumno temp = new FormularioDeAlumno();
@@ -183,11 +190,15 @@ public class PaginaInicial extends javax.swing.JFrame {
         escritorio.add(temp);
         escritorio.moveToFront(temp); // TODO add your handling code here:
     }//GEN-LAST:event_jMIAlumnosPorMateriaActionPerformed
-   
+
+    private void jMSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMouseClicked
+    System.exit(0);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMSalirMouseClicked
+  
     /**
      * @param args the command line arguments
      */
-    public static void setNimbusFeel() {
+    public static void NimbusLookAndFeel() {
      
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -206,7 +217,15 @@ public class PaginaInicial extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PaginaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
        
+        //</editor-fold>
+        PaginaInicial pag=new PaginaInicial();
+       
+       java.awt.EventQueue.invokeLater(() -> {
+           new PaginaInicial().setVisible(true);
+        });
+         
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
@@ -221,5 +240,6 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMMateria;
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

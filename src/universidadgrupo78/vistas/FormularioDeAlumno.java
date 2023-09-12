@@ -5,8 +5,6 @@
  */
 package universidadgrupo78.vistas;
 
-import javax.swing.JButton;
-
 /**
  *
  * @author Administrador
