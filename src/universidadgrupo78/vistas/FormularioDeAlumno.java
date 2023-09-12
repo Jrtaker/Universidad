@@ -40,10 +40,10 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jTextField3 = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBNuevo = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -126,13 +126,13 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jRadioButton1.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
         jRadioButton1.setText("ACTIVO");
 
-        jButton1.setText("jButton1");
+        jBNuevo.setText("Nuevo");
 
-        jButton2.setText("jButton1");
+        jBSalir.setText("Salir");
 
-        jButton3.setText("jButton1");
+        jBGuardar.setText("Guardar");
 
-        jButton4.setText("jButton1");
+        jBEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,13 +155,13 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBNuevo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(jBEliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(jBGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(jBSalir)
                         .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
@@ -186,10 +186,10 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBNuevo)
+                    .addComponent(jBSalir)
+                    .addComponent(jBGuardar)
+                    .addComponent(jBEliminar))
                 .addGap(21, 21, 21))
         );
 
@@ -375,29 +375,13 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBEliminar;
-    private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBSalir;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
