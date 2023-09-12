@@ -17,11 +17,9 @@ public class UniversidadGrupo78 {
         //</editor-fold>
         PaginaInicial.setNimbusFeel();
        
-       java.awt.EventQueue.invokeLater(new Runnable() {
-          public void run() {
-            new PaginaInicial().setVisible(true);
-          }
-       });
+       java.awt.EventQueue.invokeLater(() -> {
+           new PaginaInicial().setVisible(true);
+        });
        
     }
     
