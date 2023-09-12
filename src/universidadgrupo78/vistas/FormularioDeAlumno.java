@@ -129,6 +129,11 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jBNuevo.setText("Nuevo");
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
 
@@ -193,6 +198,10 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSalirActionPerformed
  */
     public FormularioDeAlumno() {
         initComponents();
@@ -304,6 +313,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jBNuevo.setText("Nuevo");
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(this::jBSalirActionPerformed);
 
         jBGuardar.setText("Guardar");
 
@@ -370,7 +380,9 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>                        
-
+      private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {                                        
+     this.dispose();   // TODO add your handling code here:
+    }   
 
     // Variables declaration - do not modify                     
 

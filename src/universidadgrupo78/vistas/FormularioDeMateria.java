@@ -34,7 +34,7 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -118,9 +118,14 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
 
         jButton3.setText("GUARDAR");
 
-        jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jButton2.setText("SALIR");
+        jBSalir.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jBSalir.setForeground(new java.awt.Color(0, 102, 153));
+        jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 102, 153));
@@ -143,7 +148,7 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -178,7 +183,7 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(jBSalir)
                     .addComponent(jButton4)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
@@ -187,7 +192,9 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>                        
-
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {                                        
+     this.dispose();   // TODO add your handling code here:
+    }   
 
                        
     
@@ -214,7 +221,7 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 */
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
