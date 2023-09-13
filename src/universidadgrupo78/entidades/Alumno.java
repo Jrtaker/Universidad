@@ -20,48 +20,27 @@ public class Alumno {
     private LocalDate fechaNac;
     private boolean estado;
 
-    public int getDni() {
-        return dni;
-    }
 
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-    private int dni;
     
     public Alumno() {
     }
 
-<<<<<<< Updated upstream
-    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean estado, int dni) {
-        this.idAlumno = idAlumno;
-        this.dni = dni;
-=======
     public Alumno(int idAlumno,int dni, String apellido, String nombre, LocalDate fechaNac, boolean estado) {
         this.idAlumno = idAlumno;
         this.dni=dni;
->>>>>>> Stashed changes
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
-        this.estado = estado;
-        
+        this.estado = estado;      
     }
 
-<<<<<<< Updated upstream
-    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean estado, int dni) {
-        this.dni = dni;
-=======
     public Alumno(int dni,String apellido, String nombre, LocalDate fechaNac, boolean estado) {
         this.dni=dni;
->>>>>>> Stashed changes
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
-        this.estado = estado;
-        
+        this.estado = estado;   
     }
-
     public int getDni() {
         return dni;
     }
@@ -69,7 +48,6 @@ public class Alumno {
     public void setDni(int dni) {
         this.dni = dni;
     }
-
 
     public int getIdAlumno() {
         return idAlumno;
