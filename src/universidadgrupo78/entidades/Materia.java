@@ -13,7 +13,7 @@ public class Materia {
     private int idMateria;
     private String nombre;
     private int anioMateria;
-    boolean estado;
+    private boolean estado;
 
     public Materia() {
     }
