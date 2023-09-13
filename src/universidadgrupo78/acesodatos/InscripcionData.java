@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package universidadgrupo78.acesodatos;
 
+public class InscripcionData{
+
+}
+/*
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,10 +19,8 @@ import universidadgrupo78.entidades.Alumno;
 import universidadgrupo78.entidades.Inscripcion;
 import universidadgrupo78.entidades.Materia;
 
-/**
- *
- * @author ev978
- */
+
+
 public class InscripcionData {
     private Connection con=null;
     private MateriaData md=new MateriaData();
@@ -211,4 +207,4 @@ public class InscripcionData {
         }
             return alumnosMateria;
     }
-}
+}*/

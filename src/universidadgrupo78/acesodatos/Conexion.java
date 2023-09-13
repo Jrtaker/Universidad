@@ -5,15 +5,12 @@
  */
 package universidadgrupo78.acesodatos;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Joni
- */
+
 public class Conexion {
     private static final String URL="jdbc:mariadb://localhost/";
     private static final String DB="universidad";
@@ -25,11 +22,10 @@ public class Conexion {
     
     public static Connection getConexion(){
         
-        if(connection ==null){
+        if(connection == null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 connection = DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);                
-                
             } catch (ClassNotFoundException ex){ 
                 JOptionPane.showMessageDialog(null, "Error al cargar los driver."); 
             }catch (SQLException ex) {
@@ -38,5 +34,5 @@ public class Conexion {
         }
         return connection;
     }
-}    
+}
 
