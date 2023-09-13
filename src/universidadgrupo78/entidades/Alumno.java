@@ -18,18 +18,30 @@ public class Alumno {
     private LocalDate fechaNac;
     private boolean estado;
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+    private int dni;
+    
     public Alumno() {
     }
 
-    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean estado, int dni) {
         this.idAlumno = idAlumno;
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
         this.estado = estado;
+        
     }
 
-    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean estado, int dni) {
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
