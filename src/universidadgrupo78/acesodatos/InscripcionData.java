@@ -1,19 +1,8 @@
 
-public class InscripcionData{
+package universidadgrupo78.acesodatos;
 
-}
-/*
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 import universidadgrupo78.entidades.Alumno;
 import universidadgrupo78.entidades.Inscripcion;
@@ -207,4 +196,4 @@ public class InscripcionData {
         }
             return alumnosMateria;
     }
-}*/
+}

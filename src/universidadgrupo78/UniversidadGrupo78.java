@@ -19,12 +19,7 @@ public class UniversidadGrupo78 {
          
         
         PaginaInicial.NimbusLookAndFeel();
-        Alumno juan = new Alumno(1237823,"Dominguez","Juan",LocalDate.of(1994,12,03),true);
-        AlumnoData al = new AlumnoData();
-        al.guardarAlumno(juan);
-        Materia Ciencia = new Materia("Ciencia5",3,true);
-        MateriaData ci= new MateriaData();
-        ci.guardarMateria(Ciencia);
+       
     }
     
 }

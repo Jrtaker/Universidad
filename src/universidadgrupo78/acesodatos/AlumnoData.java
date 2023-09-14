@@ -6,11 +6,8 @@
 package universidadgrupo78.acesodatos;
 
 import java.util.List;
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import universidadgrupo78.entidades.Alumno;
 import java.sql.ResultSet;
@@ -57,7 +54,6 @@ public class AlumnoData {
         JOptionPane.showMessageDialog(null,"El alumno no se guardó");
     }       
 }
-   
     public void modificarAlumno(Alumno alumno) {
       String sql="UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNac=?+ WHERE idAlumno=?";
       PreparedStatement ps =null;
@@ -72,12 +68,11 @@ public class AlumnoData {
            if (exito==1){
                JOptionPane.showMessageDialog(null, "Alumno modificado con éxito");
            }
-           
+           ps.close();
        } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null,"Error al acceder a la Tabla Alumno") ;
        }   
   }
-   
     public Alumno buscarAlumno(int id) {
         Alumno alumno=null;
         String sql="SELECT dni,apellido,nombre,fechaNac FROM alumno WHERE idAlumno=?AND estado=1";
@@ -103,7 +98,6 @@ public class AlumnoData {
        }
            return alumno;     
     }
- 
     public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno =null;
         String sql="SELECT idAlumno,dni,apellido,nombre,fechaNac FROM alumno WHERE dni=?AND estado=1";
@@ -129,8 +123,6 @@ public class AlumnoData {
        }
         return alumno;
     }
-
-    
     public  List<Alumno> listarAlumnos(){
     
     String sql="SELECT idAlumno,dni,apellido,nombre,fechaNac FROM alumno WHERE estado=1";
@@ -156,7 +148,6 @@ public class AlumnoData {
     }
     return alumnos;
     }
-    
  public void eliminarAlumno (int id){
         try{
             String sql="UPDATE alumno SET estado=0 WHERE idAlumno=? ";
