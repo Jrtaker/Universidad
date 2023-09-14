@@ -41,7 +41,7 @@ public class AlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel3.setBackground(new java.awt.Color(240, 240, 240));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Listado De Almunos Por Materia");
+        jLabel3.setText("Listado De Alumnos Por Materia");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

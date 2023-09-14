@@ -97,7 +97,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Listado De Almunos Por Materia"/>
+            <Property name="text" type="java.lang.String" value="Listado De Alumnos Por Materia"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -6,6 +6,7 @@
 package universidadgrupo78.entidades;
 
 import java.time.LocalDate;
+import java.util.*;
 
 /**
  *
@@ -41,6 +42,14 @@ public class Alumno {
         this.fechaNac = fechaNac;
         this.estado = estado;   
     }
+
+    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.estado = estado;
+    }
+    
     public int getDni() {
         return dni;
     }
@@ -91,7 +100,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+        return "alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", estado" + estado+ ", fechaNac "+ fechaNac + '}';
     }
     
     

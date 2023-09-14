@@ -8,6 +8,8 @@ package universidadgrupo78.acesodatos;
 import java.util.List;
 import java.sql.*;
 import java.sql.Date;
+import java.util.*;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import universidadgrupo78.entidades.Alumno;
 import java.sql.ResultSet;
@@ -55,7 +57,7 @@ public class AlumnoData {
     }       
 }
     public void modificarAlumno(Alumno alumno) {
-      String sql="UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNac=?+ WHERE idAlumno=?";
+      String sql="UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNac=? WHERE idAlumno=?";
       PreparedStatement ps =null;
        try {
            ps=con.prepareStatement(sql);
@@ -100,10 +102,9 @@ public class AlumnoData {
     }
     public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno =null;
-        String sql="SELECT idAlumno,dni,apellido,nombre,fechaNac FROM alumno WHERE dni=?AND estado=1";
-        PreparedStatement ps =null;
+        String sql="SELECT * FROM alumno WHERE dni=? AND estado=1";
         try {
-           ps=con.prepareStatement(sql);
+           PreparedStatement ps=con.prepareStatement(sql);
            ps.setInt(1, dni);
            ResultSet rs= ps.executeQuery();
            if(rs.next()){
@@ -112,8 +113,8 @@ public class AlumnoData {
                alumno.setDni(rs.getInt("dni"));
                alumno.setApellido(rs.getString("apellido"));
                alumno.setNombre(rs.getString("nombre"));
-               alumno.setFechaNac(rs.getDate("fechaNac").toLocalDate());
                alumno.setEstado(rs.getBoolean("estado"));
+               alumno.setFechaNac(rs.getDate("fechaNac").toLocalDate());
            }else{
                JOptionPane.showMessageDialog(null,"No existe el alumno");
            }
@@ -121,6 +122,7 @@ public class AlumnoData {
        } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,"Error al acceder a la Tabla Alumno");
        }
+        System.out.println(alumno.toString());
         return alumno;
     }
     public  List<Alumno> listarAlumnos(){

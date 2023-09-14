@@ -30,6 +30,11 @@ public class Materia {
         this.estado = estado;
     }
 
+    public Materia(int anioMateria, boolean estado) {
+        this.anioMateria = anioMateria;
+        this.estado = estado;
+    }
+
     
     public int getIdMateria() {
         return idMateria;

@@ -3,7 +3,6 @@ package universidadgrupo78.acesodatos;
 
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.*;
 import javax.swing.JOptionPane;
 import universidadgrupo78.entidades.Materia;
@@ -64,17 +63,18 @@ public class MateriaData {
            return materia;     
     }   
     public void modificarMateria(Materia materia) {
-       String sql="UPDATE materia SET nombre=?,anioMateria=?,estado=?+ WHERE idMateria=?";
+       String sql="UPDATE materia SET anioMateria=?,estado=? WHERE idMateria=?";
       
         try {
            PreparedStatement ps=con.prepareStatement(sql);
-           ps.setString(1, materia.getNombre());
-           ps.setInt(2,materia.getAnioMateria());
-           ps.setBoolean(3,materia.isEstado());
-           ps.setInt(4,materia.getIdMateria());
+           ps.setInt(1,materia.getAnioMateria());
+           ps.setBoolean(2,materia.isEstado());
+           ps.setInt(3,materia.getIdMateria());
            int exito=ps.executeUpdate();
            if (exito==1){
                JOptionPane.showMessageDialog(null, "Materia modificado con éxito");
+           }else {
+            JOptionPane.showMessageDialog(null, "No se pudo modificar la materia");
            }
           ps.close();
         } catch (SQLException ex) {

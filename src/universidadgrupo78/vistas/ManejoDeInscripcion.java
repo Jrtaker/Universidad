@@ -27,6 +27,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jRInscrip = new javax.swing.JRadioButton();
@@ -46,8 +47,10 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Listado de Materias");
 
+        buttonGroup1.add(jRInscrip);
         jRInscrip.setText("Materias Inscriptas");
 
+        buttonGroup1.add(jRNoInscrip);
         jRNoInscrip.setText("Materias no inscriptas");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -174,6 +177,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JButton jBSalir;

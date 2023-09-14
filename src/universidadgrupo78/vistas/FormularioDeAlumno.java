@@ -5,6 +5,12 @@
  */
 package universidadgrupo78.vistas;
 
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import universidadgrupo78.acesodatos.AlumnoData;
+import universidadgrupo78.entidades.Alumno;
+
 /**
  *
  * @author Joni
@@ -40,11 +46,11 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jTNombre = new javax.swing.JTextField();
         jREstado = new javax.swing.JRadioButton();
         jDFechaNac = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        jBNuevo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
 
         setMaximizable(true);
 
@@ -129,7 +135,13 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         jREstado.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
         jREstado.setText("ACTIVO");
 
-        jButton1.setText("NUEVO");
+        jDFechaNac.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                jDFechaNacVetoableChange(evt);
+            }
+        });
+
+        jBNuevo.setText("NUEVO");
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 102, 153));
@@ -140,13 +152,23 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("GUARDAR");
+        jBGuardar.setText("GUARDAR");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("ELIMINAR");
+        jBEliminar.setText("ELIMINAR");
 
-        jButton5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 102, 153));
-        jButton5.setText("BUSCAR");
+        jBBuscar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jBBuscar.setForeground(new java.awt.Color(0, 102, 153));
+        jBBuscar.setText("BUSCAR");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,11 +178,11 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBNuevo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(jBEliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(jBGuardar)
                         .addGap(90, 90, 90)
                         .addComponent(jButton2))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +198,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton5))))
+                                    .addComponent(jBBuscar))))
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -190,7 +212,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))
+                            .addComponent(jBBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,10 +224,10 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBNuevo)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBGuardar)
+                    .addComponent(jBEliminar))
                 .addGap(21, 21, 21))
         );
 
@@ -216,13 +238,36 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        AlumnoData jB = new AlumnoData();
+        int codigo = Integer.parseInt(jTDni.getText());
+        Alumno alumno = jB.buscarAlumnoPorDni(codigo);
+        
+        if (alumno != null) {
+            jTApellido.setText(alumno.getApellido());
+            jTNombre.setText(alumno.getNombre());  
+            jREstado.setSelected(alumno.isEstado());
+            jDFechaNac.setDate(Date.valueOf(alumno.getFechaNac()));
+        } else {
+            JOptionPane.showMessageDialog(null, "El alumno no fue encontrado, compruebe el DNI entrado.");
+    }               
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jDFechaNacVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDFechaNacVetoableChange
+  // TODO add your handling code here:
+    }//GEN-LAST:event_jDFechaNacVetoableChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDFechaNac;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -7,6 +7,11 @@
  */
 package universidadgrupo78.vistas;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import universidadgrupo78.acesodatos.MateriaData;
+import universidadgrupo78.entidades.Materia;
+
 /**
  *
  * @author Joni
@@ -118,10 +123,25 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
         );
 
         jBNuevo.setText("NUEVO");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("ELIMINAR");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("GUARDAR");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jBSalir.setForeground(new java.awt.Color(0, 102, 153));
@@ -135,6 +155,11 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
         jBBuscar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jBBuscar.setForeground(new java.awt.Color(0, 102, 153));
         jBBuscar.setText("BUSCAR");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
         jRadioButton1.setText("ACTIVO");
@@ -201,6 +226,38 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        MateriaData jB = new MateriaData();
+        int codigo = Integer.parseInt(jTCodigo.getText());
+        Materia materia = jB.buscarMateria(codigo);
+        
+        if (materia != null) {
+            jTNombre.setText(materia.getNombre());  
+            jTAnio.setText(Integer.toString(materia.getAnioMateria()));
+            jRadioButton1.setSelected(materia.isEstado());
+        } else {
+            JOptionPane.showMessageDialog(null, "La materia no fue encontrado, compruebe el codigo entrado.");
+    }
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        Materia x = new Materia(jTNombre.getText(),Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
+        MateriaData jB = new MateriaData(); 
+        jB.modificarMateria(x);// TODO add your handling code here:
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        MateriaData jB = new MateriaData();
+        int codigo= Integer.parseInt(jTCodigo.getText());
+        jB.eliminarMateria(codigo);
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        Materia x = new Materia(Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
+        MateriaData jB = new MateriaData(); 
+        jB.guardarMateria(x);       // TODO add your handling code here:
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
