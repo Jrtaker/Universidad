@@ -28,10 +28,10 @@ import java.util.ArrayList;
 
 public class AlumnoData {
  
-   private Connection con = null;
+   private Connection con=null;
  
    public AlumnoData() {
-   con= Conexion.getConexion();
+        con = Conexion.getConexion();
    }
     
     
