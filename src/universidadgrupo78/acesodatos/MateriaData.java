@@ -5,7 +5,7 @@
  */
 package universidadgrupo78.acesodatos;
 
-import java.sql.*;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +24,10 @@ public class MateriaData {
     }
     
     public void guardarMateria(Materia materia){
-        String sql ="INSERT INTO materia(nombre, anioMateria, estado) VALUES (Ciencia3, 3, true)";
+        String sql ="INSERT INTO materia(nombre, anioMateria, estado) VALUES (?, ?, ?)";
+        System.out.println(sql);
         try {
-                PreparedStatement ps; 
-                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, materia.getNombre());
                 ps.setInt(2, materia.getAnioMateria());
                 ps.setBoolean(3, materia.isEstado());

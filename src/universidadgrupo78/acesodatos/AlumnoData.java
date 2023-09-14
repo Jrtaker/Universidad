@@ -5,7 +5,7 @@
  */
 package universidadgrupo78.acesodatos;
 
-import java.awt.List;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -130,11 +130,12 @@ public class AlumnoData {
         return alumno;
     }
 
-    public List<Alumno> listarAlumnos(){
+    
+    public  List<Alumno> listarAlumnos(){
     
     String sql="SELECT idAlumno,dni,apellido,nombre,fechaNac FROM alumno WHERE estado=1";
         
-    ArrayList <Alumno> alumnos = new ArrayList<>();
+    ArrayList<Alumno> alumnos = new ArrayList<>();
    
      try{
             PreparedStatement ps = con.prepareStatement(sql);
