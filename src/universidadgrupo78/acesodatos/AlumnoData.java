@@ -8,8 +8,6 @@ package universidadgrupo78.acesodatos;
 import java.util.List;
 import java.sql.*;
 import java.sql.Date;
-import java.util.*;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import universidadgrupo78.entidades.Alumno;
 import java.sql.ResultSet;
@@ -36,7 +34,7 @@ public class AlumnoData {
     
     public void guardarAlumno(Alumno alumno){ 
        
-    String sql= "INSERT INTO alumno(dni,apellido,nombre,fechaNacimiento,estado) VALUES (?,?,?,?,?)";
+    String sql= "INSERT INTO alumno(dni,apellido,nombre,fechaNac,estado) VALUES (?,?,?,?,?)";
     try{          
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,alumno.getDni());
@@ -57,18 +55,19 @@ public class AlumnoData {
     }       
 }
     public void modificarAlumno(Alumno alumno) {
-      String sql="UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNac=? WHERE idAlumno=?";
+      String sql="UPDATE alumno SET apellido=?,nombre=?,fechaNac=? WHERE dni=?";
       PreparedStatement ps =null;
        try {
            ps=con.prepareStatement(sql);
-           ps.setInt(1, alumno.getDni());
-           ps.setString(2,alumno.getApellido());
-           ps.setString(3,alumno.getNombre());
-           ps.setDate(4,Date.valueOf(alumno.getFechaNac()));
-           ps.setInt(5,alumno.getIdAlumno());
+           ps.setString(1,alumno.getApellido());
+           ps.setString(2,alumno.getNombre());
+           ps.setDate(3,Date.valueOf(alumno.getFechaNac()));
+           ps.setInt(4, alumno.getDni());
            int exito=ps.executeUpdate();
            if (exito==1){
                JOptionPane.showMessageDialog(null, "Alumno modificado con éxito");
+           }else{
+               JOptionPane.showMessageDialog(null, "El Alumno no pudo ser modificado");
            }
            ps.close();
        } catch (SQLException ex) {
@@ -152,7 +151,7 @@ public class AlumnoData {
     }
  public void eliminarAlumno (int id){
         try{
-            String sql="UPDATE alumno SET estado=0 WHERE idAlumno=? ";
+            String sql="UPDATE alumno SET estado=0 WHERE dni=? ";
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setInt(1, id);
             int fila=ps.executeUpdate();

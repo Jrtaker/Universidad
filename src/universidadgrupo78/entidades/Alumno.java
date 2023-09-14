@@ -43,7 +43,7 @@ public class Alumno {
         this.estado = estado;   
     }
 
-    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+    public Alumno(String apellido, String nombre,LocalDate fechaNac, boolean estado) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;

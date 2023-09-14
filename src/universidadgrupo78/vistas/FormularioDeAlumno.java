@@ -6,7 +6,7 @@
 package universidadgrupo78.vistas;
 
 import java.sql.Date;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import universidadgrupo78.acesodatos.AlumnoData;
 import universidadgrupo78.entidades.Alumno;
@@ -142,6 +142,11 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setText("NUEVO");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 102, 153));
@@ -160,6 +165,11 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         });
 
         jBEliminar.setText("ELIMINAR");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBBuscar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jBBuscar.setForeground(new java.awt.Color(0, 102, 153));
@@ -254,12 +264,44 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // TODO add your handling code here:
+    int dni = Integer.parseInt(jTDni.getText());
+    String apellido = jTApellido.getText();
+    String nombre = jTNombre.getText();   
+    boolean estado = jREstado.isSelected();
+    java.util.Date utilDate = jDFechaNac.getDate();
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Convertir tiempo SQL 
+    LocalDate fechaNac = sqlDate.toLocalDate(); // Convertir a LocaDate
+
+        Alumno x = new Alumno(dni, apellido, nombre, fechaNac, estado);
+        AlumnoData jB = new AlumnoData(); 
+        jB.modificarAlumno(x);    // TODO add your handling code here:
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jDFechaNacVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDFechaNacVetoableChange
   // TODO add your handling code here:
     }//GEN-LAST:event_jDFechaNacVetoableChange
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+    int dni = Integer.parseInt(jTDni.getText());
+    String apellido = jTApellido.getText();
+    String nombre = jTNombre.getText();   
+    boolean estado = jREstado.isSelected();
+    java.util.Date utilDate = jDFechaNac.getDate();
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Convertir tiempo SQL 
+    LocalDate fechaNac = sqlDate.toLocalDate(); // Convertir a LocaDate
+
+    Alumno x = new Alumno(dni, apellido, nombre, fechaNac, estado);
+    
+    AlumnoData AD = new AlumnoData();
+    AD.guardarAlumno(x);
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        
+        AlumnoData jB = new AlumnoData();
+        int dni= Integer.parseInt(jTDni.getText());
+        jB.eliminarAlumno(dni);// TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
