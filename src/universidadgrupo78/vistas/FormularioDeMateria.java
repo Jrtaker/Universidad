@@ -254,7 +254,7 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        Materia x = new Materia(Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
+        Materia x = new Materia(jTNombre.getText(),Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
         MateriaData jB = new MateriaData(); 
         jB.guardarMateria(x);       // TODO add your handling code here:
     }//GEN-LAST:event_jBNuevoActionPerformed

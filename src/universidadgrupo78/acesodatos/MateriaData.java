@@ -63,13 +63,13 @@ public class MateriaData {
            return materia;     
     }   
     public void modificarMateria(Materia materia) {
-       String sql="UPDATE materia SET anioMateria=?,estado=? WHERE idMateria=?";
+       String sql="UPDATE materia SET anioMateria=?,estado=? WHERE nombre=?";
       
         try {
            PreparedStatement ps=con.prepareStatement(sql);
            ps.setInt(1,materia.getAnioMateria());
            ps.setBoolean(2,materia.isEstado());
-           ps.setInt(3,materia.getIdMateria());
+           ps.setString(3,materia.getNombre());
            int exito=ps.executeUpdate();
            if (exito==1){
                JOptionPane.showMessageDialog(null, "Materia modificado con éxito");
