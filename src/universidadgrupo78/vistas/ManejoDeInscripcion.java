@@ -5,17 +5,41 @@
  */
 package universidadgrupo78.vistas;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo78.acesodatos.AlumnoData;
+import universidadgrupo78.entidades.Alumno;
+import universidadgrupo78.entidades.Materia;
+import universidadgrupo78.acesodatos.InscripcionData;
+import universidadgrupo78.acesodatos.MateriaData;
+import universidadgrupo78.entidades.Inscripcion;
+
 /**
  *
  * @author Joni
  */
 public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel model=new DefaultTableModel();
     /**
      * Creates new form ManejoDeInscripcion
      */
     public ManejoDeInscripcion() {
         initComponents();
+        armarcabezera();
+        jRNoInscrip.setSelected(true);
+        jComboBoxAlumnos.setSelectedItem(1);
+        
+        Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
+          AlumnoData alumnosData = new AlumnoData();
+        List<Alumno> alumnos= alumnosData.listarAlumnos();
+
+        jComboBoxAlumnos.removeAllItems();
+        
+        alumnos.forEach((alumno) -> {
+            jComboBoxAlumnos.addItem(alumno);
+        });
+   
     }
 
     /**
@@ -49,9 +73,19 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jRInscrip);
         jRInscrip.setText("Materias Inscriptas");
+        jRInscrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRInscripActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRNoInscrip);
         jRNoInscrip.setText("Materias no inscriptas");
+        jRNoInscrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRNoInscripActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,6 +102,11 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
 
         jBInscribir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBInscribir.setText("Inscribir");
+        jBInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInscribirActionPerformed(evt);
+            }
+        });
 
         jBAnular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBAnular.setText("Anular Inscripción");
@@ -85,7 +124,11 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBoxAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAlumnosActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 105, 153));
 
@@ -100,7 +143,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,20 +211,167 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
-        // TODO add your handling code here:
+    if(jRInscrip.isSelected()==true){
+        Alumno x = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        if(x == null && jRNoInscrip.isSelected()==true){return;}
+        
+        int selectedRow = jTable1.getSelectedRow();
+        int filaS=jTable1.getSelectedRow();
+        
+        if (filaS!=-1){
+            //Fijar en que materia estamos
+            String materiaName = jTable1.getValueAt(selectedRow, 0).toString();
+            int codigo = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
+          
+        //Confirmar Seleccion    
+        int confirmResult = JOptionPane.showConfirmDialog(
+            this,
+            "¿Desea borrar la inscripción?",
+            "Confirmar Borrado",
+            JOptionPane.YES_NO_OPTION
+                
+        );
+            if (confirmResult == JOptionPane.YES_OPTION) {
+            // Confirmo Seleccion
+            InscripcionData inscripcionData = new InscripcionData();
+            inscripcionData.borrarInscripcion(x.getIdAlumno(), codigo);
+
+            //Refresh de la lista
+            List<Materia> updatedMaterias = inscripcionData.obtenerMateriasCursadas(x.getIdAlumno());
+            refreshTable(updatedMaterias);
+        }
+            
+            
+              
+        }else{
+            JOptionPane.showMessageDialog(this, "Porfavor seleccione una fila");
+        }   
+    }
     }//GEN-LAST:event_jBAnularActionPerformed
+    
+    //Codigo de Ayuda para refrescar tabla
+    private void refreshTable(List<Materia> materias) {
+        model.setRowCount(0);
+
+        for (Materia materia : materias) {
+            model.addRow(new Object[]{materia.getNombre(), materia.getAnioMateria(), materia.getIdMateria()});
+        }
+    }
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jComboBoxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosActionPerformed
+        Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        
+        InscripcionData materias = new InscripcionData();
+        if(selectedAlumno==null){
+            return;
+        }
+        model.setRowCount(0);
+        jTable1.removeAll();
+        if(jRInscrip.isSelected() == true){
+          
+         List<Materia> materiasCursadas = materias.obtenerMateriasCursadas(selectedAlumno.getIdAlumno());
+         cargarDatos(materiasCursadas);
+         
+        }else if(jRNoInscrip.isSelected()==true){
+            
+            List<Materia> materiasNOCursadas =  materias.obtenerMateriasNOCursadas(selectedAlumno.getIdAlumno());
+            cargarDatos(materiasNOCursadas);
+            
+        }
+      
+    }//GEN-LAST:event_jComboBoxAlumnosActionPerformed
+
+    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
+    if(jRInscrip.isSelected()==false){    //Crear Alumno
+        Alumno alumnoInscribir = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        if(alumnoInscribir == null ){return;}
+        InscripcionData materias = new InscripcionData();
+        int selectedRow = jTable1.getSelectedRow();
+        int filaS=jTable1.getSelectedRow();
+        
+        if (filaS!=-1){
+            //Crear Materia
+            int codigo = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
+            MateriaData materiaData = new MateriaData();
+            Materia materia = materiaData.buscarMateria(codigo);
+            
+            if(materia!=null){
+            //Crear Inscripcion
+            Inscripcion inscripcion = new Inscripcion();
+            inscripcion.setAlumno(alumnoInscribir);
+            inscripcion.setMateria(materia);
+            inscripcion.setNota(0);
+            
+            //Crear una Inscripcion
+            InscripcionData inscripcionData = new InscripcionData();
+            inscripcionData.guardarInscripcion(inscripcion);
+            
+            //Refrescar la lista con materias NO Cursadas
+            List<Materia> updatedMaterias = inscripcionData.obtenerMateriasNOCursadas(alumnoInscribir.getIdAlumno());
+            refreshTable(updatedMaterias);
+            }
+        }
+    }   
+    }//GEN-LAST:event_jBInscribirActionPerformed
+
+    private void jRInscripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRInscripActionPerformed
+       Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        
+        InscripcionData materias = new InscripcionData();
+        if(selectedAlumno==null){
+            return;
+        }
+        model.setRowCount(0);
+        jTable1.removeAll();
+        
+          
+         List<Materia> materiasCursadas = materias.obtenerMateriasCursadas(selectedAlumno.getIdAlumno());
+         cargarDatos(materiasCursadas);
+         
+        
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jRInscripActionPerformed
+
+    private void jRNoInscripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoInscripActionPerformed
+        Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        
+        InscripcionData materias = new InscripcionData();
+        if(selectedAlumno==null){
+            return;
+        }
+        model.setRowCount(0);
+        jTable1.removeAll();
+       
+            List<Materia> materiasNOCursadas =  materias.obtenerMateriasNOCursadas(selectedAlumno.getIdAlumno());
+            cargarDatos(materiasNOCursadas);
+            
+        
+    }//GEN-LAST:event_jRNoInscripActionPerformed
+    private void armarcabezera(){
+        model.addColumn("Materia");
+        model.addColumn("Año");
+        model.addColumn("Codigo");
+        jTable1.setModel(model);
+        
+    }
+    
+    public void cargarDatos(List<Materia> materias){
+        for(Materia materia : materias){
+        model.addRow(new Object[]{materia.getNombre(),materia.getAnioMateria(),materia.getIdMateria()});
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jComboBoxAlumnos;
+    private javax.swing.JComboBox<Alumno> jComboBoxAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

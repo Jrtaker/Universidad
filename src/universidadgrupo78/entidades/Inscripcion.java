@@ -13,22 +13,22 @@ public class Inscripcion {
     private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
-    private double note;
+    private double nota;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double note) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
-        this.note = note;
+        this.nota = nota;
     }
 
-    public Inscripcion(Alumno alumno, Materia materia, double note) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
-        this.note = note;
+        this.nota = nota;
     }
 
     public int getIdInscripcion() {
@@ -55,12 +55,12 @@ public class Inscripcion {
         this.materia = materia;
     }
 
-    public double getNote() {
-        return note;
+    public double getNota() {
+        return nota;
     }
 
-    public void setNote(double note) {
-        this.note = note;
+    public void setNota(double note) {
+        this.nota = note;
     }
 
     @Override
