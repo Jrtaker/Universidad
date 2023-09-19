@@ -244,10 +244,12 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Se deshace e la pantalla
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //Busca un alumno segun DNI
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         AlumnoData jB = new AlumnoData();
         int codigo = Integer.parseInt(jTDni.getText());
@@ -263,6 +265,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
     }               
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    //Cambia datos de alumno
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
     int dni = Integer.parseInt(jTDni.getText());
     String apellido = jTApellido.getText();
@@ -281,6 +284,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
   // TODO add your handling code here:
     }//GEN-LAST:event_jDFechaNacVetoableChange
 
+    //Crea un nuevo Alumno
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
     int dni = Integer.parseInt(jTDni.getText());
     String apellido = jTApellido.getText();
@@ -296,6 +300,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
     AD.guardarAlumno(x);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
+    //Bolla un alumno usando su DNI
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         
         AlumnoData jB = new AlumnoData();

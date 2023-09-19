@@ -223,10 +223,12 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Mata a la pantalla
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    //Busca materia segun su codigo, trae toda la info e la materia
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         MateriaData jB = new MateriaData();
         int codigo = Integer.parseInt(jTCodigo.getText());
@@ -241,18 +243,21 @@ public class FormularioDeMateria extends javax.swing.JInternalFrame {
     }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    //Permite cambiar info de la materia
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         Materia x = new Materia(jTNombre.getText(),Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
         MateriaData jB = new MateriaData(); 
         jB.modificarMateria(x);// TODO add your handling code here:
     }//GEN-LAST:event_jBGuardarActionPerformed
 
+    //Elimina la materia logicamente
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         MateriaData jB = new MateriaData();
         int codigo= Integer.parseInt(jTCodigo.getText());
         jB.eliminarMateria(codigo);
     }//GEN-LAST:event_jBEliminarActionPerformed
 
+    //Crea una nueva materia
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         Materia x = new Materia(jTNombre.getText(),Integer.parseInt(jTAnio.getText()),jRadioButton1.isSelected());
         MateriaData jB = new MateriaData(); 

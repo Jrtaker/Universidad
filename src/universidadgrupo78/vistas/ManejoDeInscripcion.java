@@ -24,6 +24,9 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     /**
      * Creates new form ManejoDeInscripcion
      */
+    
+    
+    //Crea todo, prepara alumnos para ser pasados y crea la vista
     public ManejoDeInscripcion() {
         initComponents();
         armarcabezera();
@@ -210,6 +213,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Anula la materia que este cursando un alumno
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
     if(jRInscrip.isSelected()==true){
         Alumno x = (Alumno) jComboBoxAlumnos.getSelectedItem();
@@ -262,6 +266,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    //Seleccion de alumnos
     private void jComboBoxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosActionPerformed
         Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
         
@@ -284,7 +289,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         }
       
     }//GEN-LAST:event_jComboBoxAlumnosActionPerformed
-
+    //Inscribe alumno a materia
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
     if(jRInscrip.isSelected()==false){    //Crear Alumno
         Alumno alumnoInscribir = (Alumno) jComboBoxAlumnos.getSelectedItem();
@@ -318,6 +323,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     }   
     }//GEN-LAST:event_jBInscribirActionPerformed
 
+    //Eleccion entre table
     private void jRInscripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRInscripActionPerformed
        Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
         
@@ -336,6 +342,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
        // TODO add your handling code here:
     }//GEN-LAST:event_jRInscripActionPerformed
 
+    //Eleccion entre tabla
     private void jRNoInscripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoInscripActionPerformed
         Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
         
@@ -351,7 +358,10 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
             
         
     }//GEN-LAST:event_jRNoInscripActionPerformed
+   
+    //Crea la tabla
     private void armarcabezera(){
+        
         model.addColumn("Materia");
         model.addColumn("Año");
         model.addColumn("Codigo");
@@ -359,6 +369,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         
     }
     
+    //Agrega alumnos a la tabla
     public void cargarDatos(List<Materia> materias){
         for(Materia materia : materias){
         model.addRow(new Object[]{materia.getNombre(),materia.getAnioMateria(),materia.getIdMateria()});
