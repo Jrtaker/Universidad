@@ -95,7 +95,7 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la Tabla Materia");  
         }
     }    
-    public List<Materia> listarAlumnos(){
+    public List<Materia> listarMateria(){
     
     String sql="SELECT idMateria,nombre,anioMateria,estado FROM materia WHERE estado=1";
         

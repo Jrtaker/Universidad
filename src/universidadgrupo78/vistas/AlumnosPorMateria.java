@@ -5,17 +5,37 @@
  */
 package universidadgrupo78.vistas;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo78.acesodatos.InscripcionData;
+import universidadgrupo78.acesodatos.MateriaData;
+import universidadgrupo78.entidades.Alumno;
+import universidadgrupo78.entidades.Inscripcion;
+import universidadgrupo78.entidades.Materia;
+
 /**
  *
  * @author Joni
  */
 public class AlumnosPorMateria extends javax.swing.JInternalFrame {
-
+    DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form AlumnosPorMateria
      */
     public AlumnosPorMateria() {
         initComponents();
+        armarcabezera();
+         jComboBox1.setSelectedItem(1);
+        
+        
+          MateriaData materiasData = new MateriaData();
+        List<Materia> materias= materiasData.listarMateria();
+
+        jComboBox1.removeAllItems();
+        
+        materias.forEach((materia) -> {
+           jComboBox1.addItem(materia);
+        });
     }
 
     /**
@@ -57,7 +77,11 @@ public class AlumnosPorMateria extends javax.swing.JInternalFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -144,10 +168,37 @@ public class AlumnosPorMateria extends javax.swing.JInternalFrame {
     this.dispose();    // TODO add y   our handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        Materia materias = (Materia) jComboBox1.getSelectedItem();        
+        if(materias == null ){return;}
+        //Conseguir idMateria
+        int idMateria = materias.getIdMateria();
+        
+            InscripcionData alumnoMateria = new InscripcionData();
+            List<Alumno> inscripciones= alumnoMateria.obtenerAlumnosXMateria(idMateria);
+            cargarDatos(inscripciones);
+            
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+ private void armarcabezera(){
+        
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");      
+        model.addColumn("DNI");
+        jTable1.setModel(model);
+        
+    }
+    public void cargarDatos(List<Alumno> alumnos) {
+    model.setRowCount(0);
+    
+    for (Alumno alumno : alumnos) {
+        
+        model.addRow(new Object[]{alumno.getNombre(), alumno.getApellido(), alumno.getDni()});
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Materia> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

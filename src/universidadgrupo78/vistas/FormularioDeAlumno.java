@@ -277,7 +277,7 @@ public class FormularioDeAlumno extends javax.swing.JInternalFrame {
 
         Alumno x = new Alumno(dni, apellido, nombre, fechaNac, estado);
         AlumnoData jB = new AlumnoData(); 
-        jB.modificarAlumno(x);    // TODO add your handling code here:
+        jB.modificarAlumno(x);   
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jDFechaNacVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDFechaNacVetoableChange

@@ -33,7 +33,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         jRNoInscrip.setSelected(true);
         jComboBoxAlumnos.setSelectedItem(1);
         
-        Alumno selectedAlumno = (Alumno) jComboBoxAlumnos.getSelectedItem();
+        
           AlumnoData alumnosData = new AlumnoData();
         List<Alumno> alumnos= alumnosData.listarAlumnos();
 
@@ -224,7 +224,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
         
         if (filaS!=-1){
             //Fijar en que materia estamos
-            String materiaName = jTable1.getValueAt(selectedRow, 0).toString();
+ 
             int codigo = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
           
         //Confirmar Seleccion    
@@ -294,7 +294,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     if(jRInscrip.isSelected()==false){    //Crear Alumno
         Alumno alumnoInscribir = (Alumno) jComboBoxAlumnos.getSelectedItem();
         if(alumnoInscribir == null ){return;}
-        InscripcionData materias = new InscripcionData();
+ 
         int selectedRow = jTable1.getSelectedRow();
         int filaS=jTable1.getSelectedRow();
         
@@ -371,6 +371,7 @@ public class ManejoDeInscripcion extends javax.swing.JInternalFrame {
     
     //Agrega alumnos a la tabla
     public void cargarDatos(List<Materia> materias){
+         model.setRowCount(0);
         for(Materia materia : materias){
         model.addRow(new Object[]{materia.getNombre(),materia.getAnioMateria(),materia.getIdMateria()});
         }
